@@ -1,0 +1,7 @@
+{
+  "name": "qrder-customer",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
