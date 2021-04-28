@@ -6,7 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['tabs.page.scss']
 })
 export class TabsPage {
+  itemCount = 0;
 
   constructor() {}
 
+  public incrementItemCount() {
+    this.itemCount++;
+  }
 }

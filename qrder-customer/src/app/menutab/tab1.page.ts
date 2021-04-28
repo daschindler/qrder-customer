@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {MenuCategory} from './MenuCategory';
 import {MenuItem} from './MenuItem';
-import {iterator} from 'rxjs/internal-compatibility';
+import {TabsPage} from "../tabs/tabs.page";
 
 @Component({
   selector: 'app-tab1',
@@ -11,7 +11,7 @@ import {iterator} from 'rxjs/internal-compatibility';
 export class Tab1Page {
   data: MenuCategory[] = this.getData();
 
-  constructor() {
+  constructor(public tabs: TabsPage) {
   }
 
   test(id: number) {
@@ -30,5 +30,15 @@ export class Tab1Page {
       new MenuCategory('Alcoholic', '../../assets/menu_icons/bottle-wine.svg', items),
       new MenuCategory('Non-Alcoholic', '../../assets/menu_icons/bottle-wine.svg', items)
     ];
+  }
+
+  toggleItem(item: MenuCategory) {
+    item.visible = !item.visible;
+  }
+
+  subitemPicked(subitem: MenuItem) {
+    //TODO Really add subitem to shopping cart
+    //TODO Create shopping cart class and pass an instance of it around somehow somewhere
+    this.tabs.incrementItemCount();
   }
 }
