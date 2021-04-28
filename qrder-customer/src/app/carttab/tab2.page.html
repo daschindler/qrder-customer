@@ -20,6 +20,9 @@
     </ion-label>
   </ion-item>
 
-  <qrcode [qrdata]="qrData" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+  <ion-row class="ion-justify-content-center">
+    <qrcode [qrdata]="qrData" [width]="256" [errorCorrectionLevel]="'M'" [colorLight]="'#00000000'" [colorDark]="'#ffffff'"></qrcode>
+  </ion-row>
+
 
 </ion-content>
