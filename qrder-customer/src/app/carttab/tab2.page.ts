@@ -7,6 +7,10 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
   qrData = 'zack brack qr code ins gnack';
-  constructor() {}
-
+  qrColor;
+  constructor() {
+    // Use matchMedia to check the user preference
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    this.qrColor = prefersDark.matches ? '#ffffff' : '#000000';
+  }
 }
