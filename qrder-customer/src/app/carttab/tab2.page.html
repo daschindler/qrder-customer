@@ -13,16 +13,59 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-item>
-    <ion-label class="ion-text-wrap">
+  <ion-item lines="full">
+    <ion-icon name="information-circle-outline" class="ion-margin-end" color="primary"></ion-icon>
+    <ion-label class="ion-text-wrap" color="medium">
       You can order with the generated QR Code.
       Just let a waiter scan it.
     </ion-label>
   </ion-item>
 
   <ion-row class="ion-justify-content-center">
-    <qrcode [qrdata]="qrData" [width]="256" [errorCorrectionLevel]="'M'" [colorLight]="'#00000000'" [colorDark]="'#ffffff'"></qrcode>
+    <qrcode [qrdata]="qrData" [width]="256" [errorCorrectionLevel]="'M'" [colorLight]="'#00000000'"
+            [colorDark]="'#ffffff'"></qrcode>
   </ion-row>
 
+  <!-- List Header Full Lines -->
+  <ion-list-header lines="full">
+    <ion-label>Your Order</ion-label>
+  </ion-list-header>
 
+  <ion-list >
+    <ion-item>
+      <ion-note slot="start">2</ion-note>
+      <ion-label >Long Productname <ion-text color="medium">(€4,00)</ion-text></ion-label>
+      <span>€4,00</span>
+    </ion-item>
+    <ion-item>
+      <ion-note slot="start">2</ion-note>
+      <ion-label >Long Productname <ion-text color="medium">(€4,00)</ion-text></ion-label>
+      <span>€4,00</span>
+    </ion-item>
+    <ion-item>
+      <ion-note slot="start">2</ion-note>
+      <ion-label >Long Productname <ion-text color="medium">(€4,00)</ion-text></ion-label>
+      <span>€4,00</span>
+    </ion-item>
+    <ion-item>
+      <ion-note slot="start">2</ion-note>
+      <ion-label >Long Productname <ion-text color="medium">(€4,00)</ion-text></ion-label>
+      <span>€4,00</span>
+    </ion-item><ion-item>
+    <ion-note slot="start">2</ion-note>
+    <ion-label >Long Productname <ion-text color="medium">(€4,00)</ion-text></ion-label>
+    <span>€4,00</span>
+  </ion-item>
+    <ion-item>
+      <ion-note slot="start">2</ion-note>
+      <ion-label >Long Productname <ion-text color="medium">(€4,00)</ion-text></ion-label>
+      <span>€4,00</span>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-note slot="start">2</ion-note>
+      <ion-label >Long Productname <ion-text color="medium">(€4,00)</ion-text></ion-label>
+      <span>€4,00</span>
+    </ion-item>
+
+  </ion-list>
 </ion-content>
