@@ -23,7 +23,7 @@
 
   <ion-row class="ion-justify-content-center">
     <qrcode [qrdata]="qrData" [width]="256" [errorCorrectionLevel]="'M'" [colorLight]="'#00000000'"
-            [colorDark]="'#ffffff'"></qrcode>
+            [colorDark]="qrColor"></qrcode>
   </ion-row>
 
   <!-- List Header Full Lines -->
@@ -34,38 +34,34 @@
   <ion-list >
     <ion-item>
       <ion-note slot="start">2</ion-note>
-      <ion-label >Long Productname <ion-text color="medium">(€4,00)</ion-text></ion-label>
-      <span>€4,00</span>
+      <ion-label >Red Bull <ion-text color="medium">(€3,50)</ion-text></ion-label>
+      <span>€7,00</span>
     </ion-item>
     <ion-item>
-      <ion-note slot="start">2</ion-note>
-      <ion-label >Long Productname <ion-text color="medium">(€4,00)</ion-text></ion-label>
-      <span>€4,00</span>
+      <ion-note slot="start">6</ion-note>
+      <ion-label >Freistädter <ion-text color="medium">(€3,80)</ion-text></ion-label>
+      <span>€22,80</span>
     </ion-item>
     <ion-item>
-      <ion-note slot="start">2</ion-note>
-      <ion-label >Long Productname <ion-text color="medium">(€4,00)</ion-text></ion-label>
-      <span>€4,00</span>
+      <ion-note slot="start">1</ion-note>
+      <ion-label >Wieselburger <ion-text color="medium">(€3,90)</ion-text></ion-label>
+      <span>€3,90</span>
     </ion-item>
     <ion-item>
-      <ion-note slot="start">2</ion-note>
-      <ion-label >Long Productname <ion-text color="medium">(€4,00)</ion-text></ion-label>
-      <span>€4,00</span>
-    </ion-item><ion-item>
-    <ion-note slot="start">2</ion-note>
-    <ion-label >Long Productname <ion-text color="medium">(€4,00)</ion-text></ion-label>
-    <span>€4,00</span>
-  </ion-item>
-    <ion-item>
-      <ion-note slot="start">2</ion-note>
-      <ion-label >Long Productname <ion-text color="medium">(€4,00)</ion-text></ion-label>
-      <span>€4,00</span>
+      <ion-note slot="start">4</ion-note>
+      <ion-label >Welschriesling <ion-text color="medium">(€2,50)</ion-text></ion-label>
+      <span>€10,00</span>
     </ion-item>
     <ion-item lines="full">
       <ion-note slot="start">2</ion-note>
-      <ion-label >Long Productname <ion-text color="medium">(€4,00)</ion-text></ion-label>
-      <span>€4,00</span>
+      <ion-label >Sauvignon Blanc <ion-text color="medium">(€2,70)</ion-text></ion-label>
+      <span>€5,40</span>
     </ion-item>
 
+    <ion-item lines="full">
+      <ion-note slot="start"><b>15</b></ion-note>
+      <ion-label><b>Total</b></ion-label>
+      <b>€41,60</b>
+    </ion-item>
   </ion-list>
 </ion-content>
