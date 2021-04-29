@@ -51,6 +51,7 @@ export class Tab1Page {
     //TODO Really add subitem to shopping cart
     //TODO Create shopping cart class and pass an instance of it around somehow somewhere
     this.tabs.incrementItemCount();
+    subitem.amountInCart = subitem.amountInCart + 1;
   }
 
   formatNicely(price: number): string {
