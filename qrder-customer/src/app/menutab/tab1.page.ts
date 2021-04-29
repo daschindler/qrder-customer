@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {MenuCategory} from './MenuCategory';
 import {MenuItem} from './MenuItem';
-import {TabsPage} from "../tabs/tabs.page";
+import {TabsPage} from '../tabs/tabs.page';
 
 @Component({
   selector: 'app-tab1',
@@ -21,14 +21,25 @@ export class Tab1Page {
   public getData(): MenuCategory[] {
     // this.file.checkDir(this.file.dataDirectory, 'mydir').then(_ => console.log('Directory exists')).catch(err =>
     //   console.log('Directory doesn\'t exist'));
-    const items: MenuItem[] = [
-      new MenuItem('Red Bull', 3, 0.25),
-      new MenuItem('Cola', 2.5, 0.5)
+    const beers: MenuItem[] = [
+      new MenuItem('Freistädter', 3.8, 0.33),
+      new MenuItem('Stiegl', 0.1, 0.5),
+      new MenuItem('Zipfer', 3.5, 0.5),
+      new MenuItem('Wieselburger', 3.6, 0.5),
+    ];
+
+    const wines: MenuItem[] = [
+      new MenuItem('Deep Purple', 11, 0.75),
+      new MenuItem('Blaufränkisch', 11, 0.75),
+      new MenuItem('Dreigelt', 11, 0.75),
+      new MenuItem('Gruener Veltliner', 6, 0.75),
+      new MenuItem('Chardonnay', 8, 0.75),
+      new MenuItem('Sauf-mi-au Blànc', 7, 0.75)
     ];
 
     return [
-      new MenuCategory('Alcoholic', '../../assets/menu_icons/bottle-wine.svg', items),
-      new MenuCategory('Non-Alcoholic', '../../assets/menu_icons/bottle-wine.svg', items)
+      new MenuCategory('Beer', 'beer-outline', beers),
+      new MenuCategory('Wine', 'wine-outline', wines),
     ];
   }
 
@@ -40,5 +51,9 @@ export class Tab1Page {
     //TODO Really add subitem to shopping cart
     //TODO Create shopping cart class and pass an instance of it around somehow somewhere
     this.tabs.incrementItemCount();
+  }
+
+  formatNicely(price: number): string {
+   return price.toFixed(2).replace('.', ',');
   }
 }

@@ -10,7 +10,7 @@ export class MenuCategory {
     this.name = name;
     this.imagePath = imagePath;
     this.items = items;
-    this.visible = false;
+    this.visible = true;
   }
 
 }

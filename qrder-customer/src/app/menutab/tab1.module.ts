@@ -22,9 +22,4 @@ export class Tab1PageModule {
 
   constructor() {
   }
-
-  test(id) {
-    console.log(id);
-  }
-
 }
