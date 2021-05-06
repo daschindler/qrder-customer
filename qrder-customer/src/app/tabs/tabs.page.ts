@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {AppComponent} from '../app.component';
+import {ShoppingCart} from '../menutab/ShoppingCart';
 
 @Component({
   selector: 'app-tabs',
@@ -7,10 +9,8 @@ import { Component } from '@angular/core';
 })
 export class TabsPage {
   itemCount = 0;
-
-  constructor() {}
-
-  public incrementItemCount() {
-    this.itemCount++;
+  cart: ShoppingCart;
+  constructor(public app: AppComponent) {
+    this.cart = app.shoppingCart;
   }
 }
