@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {MenuCategory} from './MenuCategory';
 import {MenuItem} from './MenuItem';
 import {TabsPage} from '../tabs/tabs.page';
+import {AppComponent} from '../app.component';
 
 @Component({
   selector: 'app-tab1',
@@ -10,19 +11,12 @@ import {TabsPage} from '../tabs/tabs.page';
 })
 export class Tab1Page {
   data: MenuCategory[] = this.getData();
-  favourites: MenuItem[] = [
-    new MenuItem('Freistädter Imperator', 3.8, 0.33),
-    new MenuItem('Freistädter Ratsherrn', 4, 0.5)
-  ];
-  favouritesCategories: MenuCategory[] = [
-    new MenuCategory('Favourites', 'star-outline', this.favourites),
-  ];
 
-  constructor(public tabs: TabsPage) {
+  constructor(public tabs: TabsPage, public app: AppComponent) {
   }
 
-  test(id: number) {
-    console.log(id);
+  getFavourites(): MenuCategory[] {
+    return this.app.getFavourites();
   }
 
   toggleFavourites(item: MenuCategory) {
@@ -69,6 +63,7 @@ export class Tab1Page {
 
   subitemPicked(subitem: MenuItem) {
     //TODO Really add subitem to shopping cart
+    this.app.shoppingCart.addItem(subitem);
     //TODO Create shopping cart class and pass an instance of it around somehow somewhere
     this.tabs.incrementItemCount();
     subitem.amountInCart = subitem.amountInCart + 1;

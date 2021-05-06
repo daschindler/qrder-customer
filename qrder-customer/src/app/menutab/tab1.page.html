@@ -13,7 +13,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-list *ngFor="let favCat of favouritesCategories">
+  <ion-list *ngFor="let favCat of getFavourites()">
 
     <ion-item (click)="toggleItem(favCat)">
       <ion-icon class="icon_subitem" name="{{favCat.imagePath}}"></ion-icon>
@@ -31,7 +31,7 @@
             <ion-note>({{formatNicely(subitem.amount)}}l)</ion-note>
           </ion-label>
 
-          <ion-badge *ngIf="subitem.amountInCart > 0">{{subitem.amountInCart}}</ion-badge>
+          <ion-badge style="font-size: large" *ngIf="subitem.amountInCart > 0">{{subitem.amountInCart}}</ion-badge>
           <ion-icon id="favIcon" slot="end" class="md" name="add-circle" color="success"></ion-icon>
         </ion-item>
       </ion-list>
