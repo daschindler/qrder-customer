@@ -26,9 +26,11 @@
             [colorDark]="qrColor"></qrcode>
   </ion-row>
 
+
   <!-- List Header Full Lines -->
   <ion-list-header lines="full">
     <ion-label>Your Order</ion-label>
+    <ion-button (click)="presentClearAlert()">Clear<ion-icon style="font-size: large; margin-left: 5px;" name="trash-outline"></ion-icon></ion-button>
   </ion-list-header>
 
   <ion-list >
