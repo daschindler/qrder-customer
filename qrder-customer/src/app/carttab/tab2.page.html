@@ -13,57 +13,72 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-item lines="full">
-    <ion-icon name="information-circle-outline" class="ion-margin-end" color="primary"></ion-icon>
-    <ion-label class="ion-text-wrap" color="medium">
-      You can order with the generated QR Code.
-      Just let a waiter scan it.
-    </ion-label>
-  </ion-item>
+  <!-- User has no Orders -->
+  <ng-template [ngIf]="true">
+    <ion-text class="ion-text-center just">
+      <h2>Your cart is empty️</h2>
+      <div class="ion-justify-content-center">
+        <img width="70%" alt="Empty shopping cart." src="./assets/empty_cart.svg"/>
+      </div>
+      <p><ion-note>You have no orders yet...</ion-note></p>
+      <p>Switch to the menu tab and add some drinks to create an order.</p>
+    </ion-text>
+  </ng-template>
 
-  <ion-row class="ion-justify-content-center">
-    <qrcode [qrdata]="qrData" [width]="256" [errorCorrectionLevel]="'M'" [colorLight]="'#00000000'"
-            [colorDark]="qrColor"></qrcode>
-  </ion-row>
-
-
-  <!-- List Header Full Lines -->
-  <ion-list-header lines="full">
-    <ion-label>Your Order</ion-label>
-    <ion-button (click)="presentClearAlert()">Clear<ion-icon style="font-size: large; margin-left: 5px;" name="trash-outline"></ion-icon></ion-button>
-  </ion-list-header>
-
-  <ion-list >
-    <ion-item>
-      <ion-text slot="start">2</ion-text>
-      <ion-label class="ion-text-wrap">Red Bull <ion-text color="medium">(€3,50)</ion-text></ion-label>
-      <span>€7,00</span>
-    </ion-item>
-    <ion-item>
-      <ion-text slot="start">6</ion-text>
-      <ion-label class="ion-text-wrap">Freistädter <ion-text color="medium">(€3,80)</ion-text></ion-label>
-      <span>€22,80</span>
-    </ion-item>
-    <ion-item>
-      <ion-text slot="start">1</ion-text>
-      <ion-label class="ion-text-wrap">Wieselburger <ion-text color="medium">(€3,90)</ion-text></ion-label>
-      <span>€3,90</span>
-    </ion-item>
-    <ion-item>
-      <ion-text slot="start">4</ion-text>
-      <ion-label class="ion-text-wrap">Welschriesling <ion-text color="medium">(€2,50)</ion-text></ion-label>
-      <span>€10,00</span>
-    </ion-item>
+  <!-- User has Orders -->
+  <ng-template [ngIf]="false">
     <ion-item lines="full">
-      <ion-text slot="start">2</ion-text>
-      <ion-label class="ion-text-wrap">Sauvignon Blanc <ion-text color="medium">(€2,70)</ion-text></ion-label>
-      <span>€5,40</span>
+      <ion-icon name="information-circle-outline" class="ion-margin-end" color="primary"></ion-icon>
+      <ion-label class="ion-text-wrap" color="medium">
+        You can order with the generated QR Code.
+        Just let a waiter scan it.
+      </ion-label>
     </ion-item>
 
-    <ion-item lines="full">
-      <ion-text slot="start"><b>15</b></ion-text>
-      <ion-label><b>Total</b></ion-label>
-      <b>€41,60</b>
-    </ion-item>
-  </ion-list>
+    <ion-row class="ion-justify-content-center">
+      <qrcode [qrdata]="qrData" [width]="256" [errorCorrectionLevel]="'M'" [colorLight]="'#00000000'"
+              [colorDark]="qrColor"></qrcode>
+    </ion-row>
+
+
+    <!-- List Header Full Lines -->
+    <ion-list-header lines="full">
+      <ion-label>Your Order</ion-label>
+      <ion-button (click)="presentClearAlert()">Clear<ion-icon style="font-size: large; margin-left: 5px;" name="trash-outline"></ion-icon></ion-button>
+    </ion-list-header>
+
+    <ion-list >
+      <ion-item>
+        <ion-text slot="start">2</ion-text>
+        <ion-label class="ion-text-wrap">Red Bull <ion-text color="medium">(€3,50)</ion-text></ion-label>
+        <span>€7,00</span>
+      </ion-item>
+      <ion-item>
+        <ion-text slot="start">6</ion-text>
+        <ion-label class="ion-text-wrap">Freistädter <ion-text color="medium">(€3,80)</ion-text></ion-label>
+        <span>€22,80</span>
+      </ion-item>
+      <ion-item>
+        <ion-text slot="start">1</ion-text>
+        <ion-label class="ion-text-wrap">Wieselburger <ion-text color="medium">(€3,90)</ion-text></ion-label>
+        <span>€3,90</span>
+      </ion-item>
+      <ion-item>
+        <ion-text slot="start">4</ion-text>
+        <ion-label class="ion-text-wrap">Welschriesling <ion-text color="medium">(€2,50)</ion-text></ion-label>
+        <span>€10,00</span>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-text slot="start">2</ion-text>
+        <ion-label class="ion-text-wrap">Sauvignon Blanc <ion-text color="medium">(€2,70)</ion-text></ion-label>
+        <span>€5,40</span>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-text slot="start"><b>15</b></ion-text>
+        <ion-label><b>Total</b></ion-label>
+        <b>€41,60</b>
+      </ion-item>
+    </ion-list>
+  </ng-template>
 </ion-content>
