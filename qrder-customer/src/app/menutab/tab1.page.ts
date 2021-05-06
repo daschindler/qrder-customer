@@ -10,12 +10,23 @@ import {TabsPage} from '../tabs/tabs.page';
 })
 export class Tab1Page {
   data: MenuCategory[] = this.getData();
+  favourites: MenuItem[] = [
+    new MenuItem('Freistädter Imperator', 3.8, 0.33),
+    new MenuItem('Freistädter Ratsherrn', 4, 0.5)
+  ];
+  favouritesCategories: MenuCategory[] = [
+    new MenuCategory('Favourites', 'star-outline', this.favourites),
+  ];
 
   constructor(public tabs: TabsPage) {
   }
 
   test(id: number) {
     console.log(id);
+  }
+
+  toggleFavourites(item: MenuCategory) {
+    item.visible = !item.visible;
   }
 
   public getData(): MenuCategory[] {
@@ -28,11 +39,19 @@ export class Tab1Page {
       new MenuItem('Wieselburger', 3.6, 0.5),
     ];
 
+    const whiskeys: MenuItem[] = [
+      new MenuItem('Johnny Walker Black Label', 7, 0.4),
+      new MenuItem('Makers Mark', 8, 0.4),
+      new MenuItem('Lagavulin 16y', 12, 0.4),
+      new MenuItem('Oban 14y', 10, 0.4),
+      new MenuItem('Laphroaig 4 seasons', 9, 0.4)
+    ];
+
     const wines: MenuItem[] = [
       new MenuItem('Deep Purple', 11, 0.75),
       new MenuItem('Blaufränkisch', 11, 0.75),
       new MenuItem('Dreigelt', 11, 0.75),
-      new MenuItem('Gruener Veltliner', 6, 0.75),
+      new MenuItem('Gruener Veltliner langer Weinname', 6, 0.75),
       new MenuItem('Chardonnay', 8, 0.75),
       new MenuItem('Sauf-mi-au Blànc', 7, 0.75)
     ];
@@ -40,6 +59,7 @@ export class Tab1Page {
     return [
       new MenuCategory('Beer', 'beer-outline', beers),
       new MenuCategory('Wine', 'wine-outline', wines),
+      new MenuCategory('Around the world', 'earth-outline', whiskeys),
     ];
   }
 
@@ -55,6 +75,6 @@ export class Tab1Page {
   }
 
   formatNicely(price: number): string {
-   return price.toFixed(2).replace('.', ',');
+    return price.toFixed(2).replace('.', ',');
   }
 }
