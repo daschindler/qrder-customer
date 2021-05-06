@@ -10,6 +10,7 @@ export class ShoppingCart {
     const singeItem = this.items.find(element => element === newItem);
 
     if(singeItem === undefined) {
+      newItem.amountInCart++;
       this.items.push(newItem);
     } else {
       singeItem.amountInCart++;
