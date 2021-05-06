@@ -26,6 +26,9 @@ export class ShoppingCart {
   }
 
   public emptyCart() {
+    this.items.forEach((value) => {
+      value.amountInCart = 0;
+    });
     this.items = [];
   }
 
