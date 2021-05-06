@@ -64,7 +64,6 @@ export class Tab1Page {
   subitemPicked(subitem: MenuItem) {
     this.app.shoppingCart.addItem(subitem);
     this.tabs.incrementItemCount();
-    subitem.amountInCart = subitem.amountInCart + 1;
   }
 
   formatNicely(price: number): string {
