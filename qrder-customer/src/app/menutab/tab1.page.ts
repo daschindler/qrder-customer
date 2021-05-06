@@ -62,9 +62,7 @@ export class Tab1Page {
   }
 
   subitemPicked(subitem: MenuItem) {
-    //TODO Really add subitem to shopping cart
     this.app.shoppingCart.addItem(subitem);
-    //TODO Create shopping cart class and pass an instance of it around somehow somewhere
     this.tabs.incrementItemCount();
     subitem.amountInCart = subitem.amountInCart + 1;
   }
