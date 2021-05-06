@@ -1,4 +1,3 @@
-import {MenuCategory} from './MenuCategory';
 import {MenuItem} from './MenuItem';
 
 export class ShoppingCart {
@@ -15,6 +14,18 @@ export class ShoppingCart {
     } else {
       singeItem.amountInCart++;
     }
+  }
+
+  public totalAmountOfItemsInCart(): number {
+    return this.items.reduce((partialSum, item) => partialSum + item.amountInCart, 0);
+  }
+
+  public totalPrice(): number {
+    return this.items.reduce((partialSum, item) => partialSum + item.totalPrice(), 0);
+  }
+
+  public emptyCart() {
+    this.items = [];
   }
 
   public isEmpty(): boolean {

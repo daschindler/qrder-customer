@@ -65,8 +65,4 @@ export class Tab1Page {
     this.app.shoppingCart.addItem(subitem);
     this.tabs.incrementItemCount();
   }
-
-  formatNicely(price: number): string {
-    return price.toFixed(2).replace('.', ',');
-  }
 }

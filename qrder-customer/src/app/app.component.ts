@@ -23,4 +23,8 @@ export class AppComponent {
   public getFavourites(): MenuCategory[] {
     return this.favouritesCategories;
   }
+
+  formatNicely(price: number): string {
+    return price.toFixed(2).replace('.', ',');
+  }
 }

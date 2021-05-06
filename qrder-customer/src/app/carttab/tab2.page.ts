@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import {AppComponent} from '../app.component';
+import {ShoppingCart} from '../menutab/ShoppingCart';
 
 @Component({
   selector: 'app-tab2',
@@ -9,13 +11,16 @@ import { AlertController } from '@ionic/angular';
 export class Tab2Page {
   qrData = 'zack brack qr code ins gnack';
   qrColor;
-  constructor(public alertController: AlertController) {
+  cart: ShoppingCart;
+  constructor(public app: AppComponent, public alertController: AlertController) {
+    this.cart = this.app.shoppingCart;
     // Use matchMedia to check the user preference
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
     this.qrColor = prefersDark.matches ? '#ffffff' : '#000000';
   }
   clickedClear() {
     // Clear the cart
+    this.cart.emptyCart();
   }
 
   async presentClearAlert() {
