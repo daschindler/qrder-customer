@@ -15,7 +15,6 @@ export class ShoppingCart {
     } else {
       singeItem.amountInCart++;
     }
-    console.log("New item added: " + newItem.name);s
   }
 
   public isEmpty(): boolean {
