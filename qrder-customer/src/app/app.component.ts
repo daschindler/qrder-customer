@@ -10,8 +10,8 @@ import {ShoppingCart} from './menutab/ShoppingCart';
 })
 export class AppComponent {
   favourites: MenuItem[] = [
-    new MenuItem('Freistädter Imperator', 3.8, 0.33),
-    new MenuItem('Freistädter Ratsherrn', 4, 0.5)
+    new MenuItem(1, 'Freistädter Imperator', 3.8, 0.33),
+    new MenuItem(2, 'Freistädter Ratsherrn', 4, 0.5)
   ];
   favouritesCategories: MenuCategory[] = [
     new MenuCategory('Favourites', 'star-outline', this.favourites),
