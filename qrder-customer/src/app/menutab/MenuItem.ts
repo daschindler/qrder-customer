@@ -12,8 +12,4 @@ export class MenuItem {
     this.amount = amount;
     this.amountInCart = 0;
   }
-
-  totalPrice(): number {
-    return this.amountInCart * this.price;
-  }
 }

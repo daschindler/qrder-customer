@@ -48,11 +48,11 @@
       <ion-button (click)="presentClearAlert()">Clear<ion-icon style="font-size: large; margin-left: 5px;" name="trash-outline"></ion-icon></ion-button>
     </ion-list-header>
 
-    <ion-list *ngFor="let order of cart.items; let first=first">
+    <ion-list *ngFor="let order of cart.items">
       <ion-item >
         <ion-text slot="start">{{order.amountInCart}}</ion-text>
         <ion-label class="ion-text-wrap">{{order.name}} <ion-text color="medium">({{app.formatNicely(order.amount)}}l)</ion-text></ion-label>
-        <span>€{{app.formatNicely(order.totalPrice())}}</span>
+        <span>€{{app.formatNicely(order.amountInCart * order.price)}}</span>
       </ion-item>
     </ion-list>
     <ion-item lines="full">

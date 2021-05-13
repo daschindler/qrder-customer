@@ -22,7 +22,7 @@ export class ShoppingCart {
   }
 
   public totalPrice(): number {
-    return this.items.reduce((partialSum, item) => partialSum + item.totalPrice(), 0);
+    return this.items.reduce((partialSum, item) => partialSum + item.amountInCart * item.price, 0);
   }
 
   public emptyCart() {
