@@ -10,8 +10,8 @@ import {ShoppingCart} from './menutab/ShoppingCart';
 })
 export class AppComponent {
   favourites: MenuItem[] = [
-    new MenuItem(1, 'Freistädter Imperator', 3.8, 0.33),
-    new MenuItem(2, 'Freistädter Ratsherrn', 4, 0.5)
+    // new MenuItem(1, 'Freistädter Imperator', 3.8, 0.33),
+    // new MenuItem(2, 'Freistädter Ratsherrn', 4, 0.5)
   ];
   favouritesCategories: MenuCategory[] = [
     new MenuCategory('Favourites', 'star-outline', this.favourites),
@@ -22,6 +22,12 @@ export class AppComponent {
 
   public getFavourites(): MenuCategory[] {
     return this.favouritesCategories;
+  }
+
+  public addFavourite(newFavourite: MenuItem) {
+    if(this.favourites.filter(item => item.id === newFavourite.id).length > 0) {return;}
+
+    this.favourites.push(newFavourite);
   }
 
   formatNicely(price: number): string {

@@ -13,6 +13,8 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-searchbar showCancelButton="focus" placeholder="Search for an item" (ionChange)="filterItems($event)" (ionCancel)="clearSearch()"></ion-searchbar>
+
   <ion-list *ngFor="let favCat of getFavourites()">
 
     <ion-item (click)="toggleItem(favCat)">
