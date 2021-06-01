@@ -16,13 +16,11 @@ export class Tab1Page {
   unfilteredData: MenuCategory[] = [];
   url = 'assets/data/items.json';
   isLongPressing = false;
+  favourites: MenuCategory[] = [];
 
   constructor(public tabs: TabsPage, public app: AppComponent, public http: HttpClient) {
     this.getCategories();
-  }
-
-  getFavourites(): MenuCategory[] {
-    return this.app.getFavourites();
+    this.favourites = this.app.getFavourites();
   }
 
   toggleFavourites(item: MenuCategory) {
@@ -31,6 +29,11 @@ export class Tab1Page {
 
   clearSearch() {
     this.data = this.unfilteredData;
+  }
+
+  addToFavourites(item: MenuItem) {
+    console.log('long press succeeded!')
+    this.app.addFavourite(item);
   }
 
   filterItems(searchEvent) {
@@ -62,6 +65,7 @@ export class Tab1Page {
     this.isLongPressing = true;
   }
   didLongPress(menuItem: MenuItem) {
+    this.addToFavourites(menuItem);
     console.log('Do something on long press');
   }
 
@@ -98,6 +102,5 @@ export class Tab1Page {
 
   subitemPicked(subitem: MenuItem) {
     this.app.shoppingCart.addItem(subitem);
-    this.app.addFavourite(subitem);
   }
 }

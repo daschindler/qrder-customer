@@ -13,9 +13,10 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-searchbar showCancelButton="focus" placeholder="Search for an item" (ionChange)="filterItems($event)" (ionCancel)="clearSearch()"></ion-searchbar>
+  <ion-searchbar showCancelButton="focus" placeholder="Search for an item" (ionChange)="filterItems($event)"
+                 (ionCancel)="clearSearch()"></ion-searchbar>
 
-  <ion-list *ngFor="let favCat of getFavourites()">
+  <ion-list *ngFor="let favCat of favourites">
 
     <ion-item (click)="toggleItem(favCat)">
       <ion-icon class="icon_subitem" name="{{favCat.imagePath}}"></ion-icon>
@@ -54,7 +55,7 @@
     <div class="ion-margin-start" *ngIf="item.visible">
 
       <ion-list *ngFor="let subitem of item.items">
-        <ion-item ion-long-press [interval]="400" (longPressed)="longPressTriggeredFromFramework(subitem)"
+        <ion-item ion-long-press [interval]="200" (longPressed)="longPressTriggeredFromFramework(subitem)"
                   (pressEnded)="didReleasePress()" (click)="subitemPicked(subitem)"> <!-- Hides and shows items when category is clicked -->
           <ion-col size="3">
             <ion-label class="subitem_price">€ {{app.formatNicely(subitem.price)}}</ion-label>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {MenuCategory} from './menutab/MenuCategory';
 import {MenuItem} from './menutab/MenuItem';
 import {ShoppingCart} from './menutab/ShoppingCart';
@@ -13,21 +13,44 @@ export class AppComponent {
     // new MenuItem(1, 'Freistädter Imperator', 3.8, 0.33),
     // new MenuItem(2, 'Freistädter Ratsherrn', 4, 0.5)
   ];
-  favouritesCategories: MenuCategory[] = [
-    new MenuCategory('Favourites', 'star-outline', this.favourites),
-  ];
+  favouritesCategories: MenuCategory[] = [new MenuCategory('Favourites', 'star-outline', this.favourites)];
   shoppingCart: ShoppingCart = new ShoppingCart();
 
-  constructor() {}
+  constructor() {
+    this.readLocalStorageFavourites();
+  }
 
   public getFavourites(): MenuCategory[] {
     return this.favouritesCategories;
   }
 
   public addFavourite(newFavourite: MenuItem) {
-    if(this.favourites.filter(item => item.id === newFavourite.id).length > 0) {return;}
+    newFavourite.amountInCart = 0;
 
-    this.favourites.push(newFavourite);
+    if (this.favourites.filter(item => item.id === newFavourite.id).length > 0) {
+      //already exists in favourites, delete it instead of adding it.
+      this.favourites = this.favourites.filter(item => item.id !== newFavourite.id);
+    } else {
+      // otherwise add the new favourite
+      this.favourites.push(newFavourite);
+    }
+
+    this.updateLocalStorage();
+    this.readLocalStorageFavourites();
+  }
+
+  updateLocalStorage() {
+    console.log('Updating local storage with: ' + JSON.stringify(this.favourites));
+    localStorage.setItem('favourites', JSON.stringify(this.favourites));
+  }
+
+  readLocalStorageFavourites() {
+    this.favourites = JSON.parse(localStorage.getItem('favourites'));
+
+    if (this.favourites == null) this.favourites = [];
+
+    this.favouritesCategories[0].items = this.favourites;
+    console.log('Read from storage: ' + JSON.stringify(this.favourites));
   }
 
   formatNicely(price: number): string {
