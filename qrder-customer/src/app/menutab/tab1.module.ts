@@ -4,18 +4,18 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {Tab1Page} from './tab1.page';
 import {ExploreContainerComponentModule} from '../explore-container/explore-container.module';
-import {File} from '@ionic-native/file/ngx';
-
 import {Tab1PageRoutingModule} from './tab1-routing.module';
+import {LongPressModule} from 'ionic-long-press';
 
 @NgModule({
-  imports: [
-    IonicModule,
-    CommonModule,
-    FormsModule,
-    ExploreContainerComponentModule,
-    Tab1PageRoutingModule
-  ],
+    imports: [
+        IonicModule,
+        CommonModule,
+        FormsModule,
+        ExploreContainerComponentModule,
+        Tab1PageRoutingModule,
+        LongPressModule
+    ],
   declarations: [Tab1Page]
 })
 export class Tab1PageModule {

@@ -54,7 +54,8 @@
     <div class="ion-margin-start" *ngIf="item.visible">
 
       <ion-list *ngFor="let subitem of item.items">
-        <ion-item (click)="subitemPicked(subitem)"> <!-- Hides and shows items when category is clicked -->
+        <ion-item ion-long-press [interval]="400" (longPressed)="longPressTriggeredFromFramework(subitem)"
+                  (pressEnded)="didReleasePress()" (click)="subitemPicked(subitem)"> <!-- Hides and shows items when category is clicked -->
           <ion-col size="3">
             <ion-label class="subitem_price">€ {{app.formatNicely(subitem.price)}}</ion-label>
           </ion-col>

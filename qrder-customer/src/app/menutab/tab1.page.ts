@@ -15,6 +15,7 @@ export class Tab1Page {
   data: MenuCategory[] = [];
   unfilteredData: MenuCategory[] = [];
   url = 'assets/data/items.json';
+  isLongPressing = false;
 
   constructor(public tabs: TabsPage, public app: AppComponent, public http: HttpClient) {
     this.getCategories();
@@ -49,6 +50,19 @@ export class Tab1Page {
       category.visible = category.items.length !== 0; // make all categories visible during search (if there are matching items)
       return category;
     });
+  }
+  didReleasePress() {
+    console.log('Did release.');
+    this.isLongPressing = false;
+  }
+  longPressTriggeredFromFramework(menuItem: MenuItem) {
+    if (!this.isLongPressing) {
+      this.didLongPress(menuItem);
+    }
+    this.isLongPressing = true;
+  }
+  didLongPress(menuItem: MenuItem) {
+    console.log('Do something on long press');
   }
 
   cloneUnfilteredData() {
