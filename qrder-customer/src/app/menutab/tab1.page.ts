@@ -32,7 +32,7 @@ export class Tab1Page {
   }
 
   addToFavourites(item: MenuItem) {
-    console.log('long press succeeded!')
+    console.log('long press succeeded!');
     this.app.addFavourite(item);
   }
 
