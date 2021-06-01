@@ -3,6 +3,8 @@ import { AlertController } from '@ionic/angular';
 import {AppComponent} from '../app.component';
 import {ShoppingCart} from '../menutab/ShoppingCart';
 import {MenuItem} from '../menutab/MenuItem';
+import { PopoverController } from '@ionic/angular';
+import {PopoverComponent} from './popover/popover.component';
 
 @Component({
   selector: 'app-tab2',
@@ -21,7 +23,8 @@ export class Tab2Page {
   qrData;
   qrColor;
   cart: ShoppingCart;
-  constructor(public app: AppComponent, public alertController: AlertController) {
+  constructor(public app: AppComponent, public alertController: AlertController,
+              public popoverController: PopoverController) {
     this.cart = this.app.shoppingCart;
     this.qrData = this.createQRData();
     // Use matchMedia to check the user preference
@@ -63,6 +66,25 @@ export class Tab2Page {
     // therefore multiply by 16^3
     // Reduce amount by 1 as there are no orders with 0 amount
     return String.fromCharCode(Math.pow(16, 3) * (amount-1) + id);
+  }
+
+  async presentPopover(order: MenuItem, cart: ShoppingCart) {
+    const popover = await this.popoverController.create({
+      component: PopoverComponent,
+      translucent: true,
+      componentProps:{key1:order, key2: cart}
+    });
+    await popover.present();
+
+    const { role } = await popover.onDidDismiss();
+    if (order.amountInCart === 0) {
+      if (this.cart.items.length === 1) {
+        this.cart.emptyCart();
+      } else {
+        this.cart.items = this.cart.items.filter(predicate => predicate.id !== order.id);
+      }
+    }
+    console.log('onDidDismiss resolved with role', role);
   }
 
   async presentClearAlert() {

@@ -49,7 +49,7 @@
     </ion-list-header>
 
     <ion-list *ngFor="let order of cart.items">
-      <ion-item >
+      <ion-item (click)="this.presentPopover(order, cart)">
         <ion-text slot="start">{{order.amountInCart}}</ion-text>
         <ion-label class="ion-text-wrap">{{order.name}} <ion-text color="medium">({{app.formatNicely(order.amount)}}l)</ion-text></ion-label>
         <span>€{{app.formatNicely(order.amountInCart * order.price)}}</span>
