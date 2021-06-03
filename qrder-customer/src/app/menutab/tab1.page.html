@@ -29,7 +29,7 @@
     <div class="ion-margin-start" *ngIf="favCat.visible">
 
       <ion-list *ngFor="let subitem of favCat.items">
-        <ion-item (click)="subitemPicked(subitem)"> <!-- Hides and shows items when category is clicked -->
+        <ion-item (click)="favouritePicked(subitem)"> <!-- Hides and shows items when category is clicked -->
           <ion-label id="favItem" class="ion-text-wrap">{{subitem.name}}
             <ion-note>({{app.formatNicely(subitem.amount)}}l)</ion-note>
           </ion-label>

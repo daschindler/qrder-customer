@@ -32,7 +32,7 @@ export class Tab1Page {
   }
 
   addToFavourites(item: MenuItem) {
-    console.log('long press succeeded!')
+    // Toast about adding favourite
     this.app.addFavourite(item);
   }
 
@@ -54,16 +54,19 @@ export class Tab1Page {
       return category;
     });
   }
+
   didReleasePress() {
     console.log('Did release.');
     this.isLongPressing = false;
   }
+
   longPressTriggeredFromFramework(menuItem: MenuItem) {
     if (!this.isLongPressing) {
       this.didLongPress(menuItem);
     }
     this.isLongPressing = true;
   }
+
   didLongPress(menuItem: MenuItem) {
     this.addToFavourites(menuItem);
     console.log('Do something on long press');
@@ -102,5 +105,25 @@ export class Tab1Page {
 
   subitemPicked(subitem: MenuItem) {
     this.app.shoppingCart.addItem(subitem);
+    // also go through favourites to add it if necessary
+    this.favourites.forEach(category => {
+      category.items.filter(item => item.id === subitem.id).forEach(favouriteItem => {
+        favouriteItem.amountInCart += 1;
+      })
+    })
+
+  }
+
+  favouritePicked(subitem: MenuItem) {
+    // find item in original item list and add that one
+    this.data.forEach(category => {
+        category.items.filter(item => item.id === subitem.id).forEach(filteredItem => {
+            this.app.shoppingCart.addItem(filteredItem);
+            // add badge to favourite as well
+            subitem.amountInCart += 1;
+          }
+        )
+      }
+    );
   }
 }
