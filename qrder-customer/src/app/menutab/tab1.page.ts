@@ -23,6 +23,33 @@ export class Tab1Page {
     this.favourites = this.app.getFavourites();
   }
 
+
+  ionViewDidEnter() {
+    let shoppingCartItems = this.app.shoppingCart.items;
+    // check shopping cart data and align with favourites
+    if (shoppingCartItems.length === 0) {
+      // shopping cart got cleared as a whole ==> all favourites are 0 amount now
+      this.favourites.forEach(category => {
+        category.items.forEach(item => {
+          item.amountInCart = 0;
+        })
+      })
+    }
+
+    // shopping cart wasn't cleared; maybe some amounts changed, check all the favourites
+    this.favourites.forEach(category => {
+      category.items.forEach(favouriteItem => {
+        let shoppingItem = shoppingCartItems.find(item => item.id === favouriteItem.id)
+
+        if (shoppingItem === null || shoppingItem === undefined) {
+          favouriteItem.amountInCart = 0;
+        } else {
+          favouriteItem.amountInCart = shoppingItem.amountInCart;
+        }
+      })
+    })
+  }
+
   toggleFavourites(item: MenuCategory) {
     item.visible = !item.visible;
   }
