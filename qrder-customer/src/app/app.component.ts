@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {MenuCategory} from './menutab/MenuCategory';
 import {MenuItem} from './menutab/MenuItem';
 import {ShoppingCart} from './menutab/ShoppingCart';
+import {ToastController} from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -13,12 +14,20 @@ export class AppComponent {
   favouritesCategories: MenuCategory[] = [new MenuCategory('Favourites', 'star-outline', this.favourites)];
   shoppingCart: ShoppingCart = new ShoppingCart();
 
-  constructor() {
+  constructor(public toastController: ToastController) {
     this.readLocalStorageFavourites();
   }
 
   public getFavourites(): MenuCategory[] {
     return this.favouritesCategories;
+  }
+
+  async presentToast(toastMessage: string) {
+    const toast = await this.toastController.create({
+      message: toastMessage,
+      duration: 2000
+    });
+    await toast.present();
   }
 
   public addFavourite(newFavourite: MenuItem) {
@@ -27,9 +36,11 @@ export class AppComponent {
     if (this.favourites.filter(item => item.id === newFavourite.id).length > 0) {
       //already exists in favourites, delete it instead of adding it.
       this.favourites = this.favourites.filter(item => item.id !== newFavourite.id);
+      this.presentToast('Removed from Favourites').then(r => {});
     } else {
       // otherwise add the new favourite
       this.favourites.push(newFavourite);
+      this.presentToast('Added Favourites').then(r => {});
     }
 
     this.updateLocalStorage();
