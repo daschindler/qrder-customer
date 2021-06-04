@@ -26,7 +26,6 @@ export class Tab2Page {
   constructor(public app: AppComponent, public alertController: AlertController,
               public popoverController: PopoverController) {
     this.cart = this.app.shoppingCart;
-    this.qrData = this.createQRData();
     // Use matchMedia to check the user preference
     //const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
     // Enforce light mode, because some scanners struggle with reading a dark qr-code
@@ -84,7 +83,6 @@ export class Tab2Page {
         this.cart.items = this.cart.items.filter(predicate => predicate.id !== order.id);
       }
     }
-    this.qrData = this.createQRData();
     console.log('onDidDismiss resolved with role', role);
   }
 

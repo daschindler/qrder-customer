@@ -37,7 +37,7 @@
     </ion-item>
 
     <ion-row class="ion-justify-content-center">
-      <qrcode class="ion-margin-top" [qrdata]="qrData" [width]="256" [colorLight]="'#ffffff'" [margin]="2"
+      <qrcode class="ion-margin-top" [qrdata]="this.createQRData()" [width]="256" [colorLight]="'#ffffff'" [margin]="2"
               [colorDark]="qrColor"></qrcode>
     </ion-row>
 
