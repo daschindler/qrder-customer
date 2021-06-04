@@ -84,6 +84,7 @@ export class Tab2Page {
         this.cart.items = this.cart.items.filter(predicate => predicate.id !== order.id);
       }
     }
+    this.qrData = this.createQRData();
     console.log('onDidDismiss resolved with role', role);
   }
 
