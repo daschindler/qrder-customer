@@ -25,6 +25,7 @@ export class AppComponent {
   async presentToast(toastMessage: string) {
     const toast = await this.toastController.create({
       message: toastMessage,
+      position: 'top',
       duration: 2000
     });
     await toast.present();
@@ -36,11 +37,11 @@ export class AppComponent {
     if (this.favourites.filter(item => item.id === newFavourite.id).length > 0) {
       //already exists in favourites, delete it instead of adding it.
       this.favourites = this.favourites.filter(item => item.id !== newFavourite.id);
-      this.presentToast('Removed from Favourites').then(r => {});
+      this.presentToast(`Removed '${ newFavourite.name }' from favourites`).then();
     } else {
       // otherwise add the new favourite
       this.favourites.push(newFavourite);
-      this.presentToast('Added Favourites').then(r => {});
+      this.presentToast(`Added '${ newFavourite.name }' to favourites.`).then();
     }
 
     this.updateLocalStorage();
@@ -55,7 +56,7 @@ export class AppComponent {
   readLocalStorageFavourites() {
     this.favourites = JSON.parse(localStorage.getItem('favourites'));
 
-    if (this.favourites == null) this.favourites = [];
+    if (this.favourites == null) {this.favourites = [];}
 
     this.favouritesCategories[0].items = this.favourites;
     console.log('Read from storage: ' + JSON.stringify(this.favourites));
